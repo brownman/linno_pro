@@ -1,5 +1,6 @@
-FROM    ubuntu:14.04.2
-ADD   . $HOME
+FROM   ubuntu:14.04.2
+USER   root
+ADD    . $HOME
 
 RUN apt-get update -qq -y
 RUN cat /etc/resolv.conf
