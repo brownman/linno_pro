@@ -18,7 +18,7 @@ commander(){
 
 
 set_env(){
-    cmd_inside='bash -c ./start.sh'
+    cmd_inside="${cmd_inside:-'bash -c ./start.sh'}"
     container_id='brownman/linno_pro:master'
     alias_ubuntu=alias_ubuntu
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
@@ -35,7 +35,7 @@ build(){
     trace re-build dockerfile ?
     read answer
     if [ "$answer" = y ];then
-        docker build -t $container_id 
+        commander docker build -t $container_id  .
     else
         trace skip building image
     fi
@@ -74,7 +74,9 @@ exit 1;
 } || { \
 
     if [[ $1 = build || $1 = run ]];then
-        commander steps "${@:-}"
+        func1=$1
+        cmd_inside="${@:2}"
+        commander steps $func1 $args
     else
         trace 1st argument: build OR run
     fi
