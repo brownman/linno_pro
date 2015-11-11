@@ -1,7 +1,7 @@
 FROM   ubuntu:14.04.2
 USER   root
 WORKDIR /home/linno_pro
-
+ENV HOME /home/linno_pro
 COPY . $HOME
 
 RUN apt-get update -qq -y
