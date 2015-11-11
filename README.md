@@ -49,11 +49,13 @@ docker build -t $container_id .
 ```
 
 
-
-Troobleshoot
 --------
 
-### git/rsync can't clone:
+
+####  Troobleshoot
+
+
+git/rsync can't clone:
 
 ```bash
 chmod +x mail_my_key.sh
