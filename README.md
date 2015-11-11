@@ -20,6 +20,7 @@ docker run -it --name=$alias_ubuntu --privileged=true \
 $volume_ssh  \
 $volume_socket \
 $volume_bin \
+$volume_apparmor \
 brownman/linno_pro \
 bash -c inside.sh
 ```
