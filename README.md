@@ -25,6 +25,7 @@ cd /tmp
 git clone https://github.com/brownman/linno_pro.git
 cd linno_pro
 chmod +x outside.sh
+docker pull brownman/linno_pro
 ./outside.sh run
 ```
 
