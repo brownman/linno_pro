@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 clear
 unset trace
 unset commander
