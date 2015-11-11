@@ -1,6 +1,8 @@
 FROM   ubuntu:14.04.2
 USER   root
-ADD    . $HOME
+WORKDIR /home/linno_pro
+
+COPY . $HOME
 
 RUN apt-get update -qq -y
 RUN cat /etc/resolv.conf
