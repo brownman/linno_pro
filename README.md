@@ -9,10 +9,11 @@ linnovate project magic (aka: linno_pro )
 
 - Option1 
 ```
+cd /tmp
 git clone https://github.com/brownman/linno_pro.git
 cd linno_pro
 chmod +x outside.sh
-bash -c ./outside.sh
+bash -c ./outside.sh run
 ```
 
 - Option2 (copy+paste)
