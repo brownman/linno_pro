@@ -22,8 +22,9 @@ docker -v | grep 'Docker version 1.8' || ( echo 1>&2 your docker is not updated 
 ```
 
 cd /tmp
-git clone https://github.com/brownman/linno_pro.git
+test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
+git pull
 chmod +x outside.sh
 docker pull brownman/linno_pro
 ./outside.sh run
