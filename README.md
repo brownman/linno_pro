@@ -7,6 +7,13 @@ linno_pro
 
 ### how to run
 
+- Option1:
+```
+chmod +x outside.sh
+bash -c ./outside.sh
+```
+
+- Option2:
 
 ```bash
 cmd_bash="${cmd_bash:-inside.sh}"
