@@ -27,7 +27,7 @@ cd linno_pro
 git pull
 chmod +x outside.sh
 docker pull brownman/linno_pro
-./outside.sh run
+./outside.sh run ./inside.sh
 ```
 
  Option2 (copy+paste)
