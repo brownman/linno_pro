@@ -4,11 +4,23 @@
 linnovate project magic (aka: linno_pro )
 ======
 
+### requirements: docker
+
+```bash
+sudo apt-get purge docker docker.io
+wget -qO- https://get.docker.com/ | sh
+wget -qO- https://get.docker.com/gpg | sudo apt-key add -
+ln -sf /usr/bin/docker /usr/local/bin/docker
+sudo usermod -aG docker $LOGNAME 
+docker -v | grep 'Docker version 1.8' || ( echo 1>&2 your docker is not updated !; )
+```
+
 
 ### how to run ?
 
-- Option1 
+ Option1 
 ```
+
 cd /tmp
 git clone https://github.com/brownman/linno_pro.git
 cd linno_pro
@@ -16,7 +28,7 @@ chmod +x outside.sh
 ./outside.sh run
 ```
 
-- Option2 (copy+paste)
+ Option2 (copy+paste)
 
 ```bash
 cmd_bash="${cmd_bash:-./inside.sh}"
