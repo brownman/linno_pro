@@ -40,7 +40,7 @@ eval "$cmd"
 ```
 
 
-howto build image mysql:
+how to build image mysql:
 ---------
 
 ```bash
