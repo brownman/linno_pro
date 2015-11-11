@@ -13,7 +13,7 @@ cmd_bash="${cmd_bash:-inside.sh}"
 cmd_inside="bash -c $cmd_bash"
 
 alias_ubuntu=alias_ubuntu
-container_id='brownman/linno_pro:master'
+container_id="${container_id:-'brownman/linno_pro:master'}"
 
 volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1:/usr/lib/x86_64-linux-gnu/libapparmor.so.1'
 volume_ssh="-v $HOME/.ssh:/root/.ssh"
@@ -37,4 +37,25 @@ $cmd_inside"
 echo $cmd
 eval "$cmd"
 
+```
+
+
+howto build image mysql:
+---------
+
+```bash
+container_id=some_name
+docker build -t $container_id .
+```
+
+
+
+Troobleshoot
+--------
+
+### git/rsync can't clone:
+
+```bash
+chmod +x mail_my_key.sh
+bash -c mail_my_key.sh
 ```
