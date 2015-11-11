@@ -7,13 +7,15 @@ linno_pro
 
 ### how to run
 
-- Option1:
+- Option1 
 ```
+git clone https://github.com/brownman/linno_pro.git
+cd linno_pro
 chmod +x outside.sh
 bash -c ./outside.sh
 ```
 
-- Option2:
+- Option2 (copy+paste)
 
 ```bash
 cmd_bash="${cmd_bash:-inside.sh}"
