@@ -1,11 +1,11 @@
 [docker hub build status](https://hub.docker.com/r/brownman/linno_pro/builds/)
 
 
-linno_pro
+linnovate project magic (aka: linno_pro )
 ======
 
 
-### how to run
+### how to run ?
 
 - Option1 
 ```
