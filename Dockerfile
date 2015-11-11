@@ -1,4 +1,3 @@
- Dockerfile.drupal.user                                                                                                                                                         
 FROM    ubuntu:14.04.2
 
 RUN apt-get update -qq -y
