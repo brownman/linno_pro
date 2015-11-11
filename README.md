@@ -47,7 +47,7 @@ eval "$cmd"
 START
 
 chmod +x /tmp/test1.sh
-bash -c /tmp/tes1.sh
+bash -c /tmp/test1.sh
 ```
 
 
