@@ -16,6 +16,7 @@ bash -c ./outside.sh
 - Option2:
 
 ```bash
+cat > /tmp/test1.sh <<START
 cmd_bash="${cmd_bash:-inside.sh}"
 cmd_inside="bash -c $cmd_bash"
 
@@ -43,7 +44,10 @@ $cmd_inside"
 
 echo $cmd
 eval "$cmd"
+START
 
+chmod +x /tmp/test1.sh
+bash -c /tmp/tes1.sh
 ```
 
 
