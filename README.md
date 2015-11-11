@@ -10,7 +10,7 @@ linno_pro
 
 ```bash
 alias_ubuntu=alias_ubuntu
-container_id='brownman/linno_pro'
+container_id='brownman/linno_pro:master'
 
 volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1:/usr/lib/x86_64- linux-gnu/libapparmor.so.1'
 volume_ssh="-v $HOME/.ssh:/root/.ssh"
