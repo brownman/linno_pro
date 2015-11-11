@@ -18,7 +18,7 @@ commander(){
 
 
 set_env(){
-    cmd_inside="${cmd_inside:-'bash -c ./start.sh'}"
+    cmd_inside="${cmd_inside:-'bash -c ./inside.sh'}"
     container_id='brownman/linno_pro:master'
     alias_ubuntu=alias_ubuntu
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
