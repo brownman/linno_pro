@@ -22,6 +22,6 @@ sudo
 
 #RUN git clone --depth=1 https://github.com/brownman/install_config_test 
 #RUN cd install_config_test && chmod u+x travis.sh && ./travis.sh mean
-RUN sudo chmod 755 $HOME/start.sh #&& bash -c $HOME/start.sh 
+RUN sudo chmod 755 $HOME/inside.sh #&& bash -c $HOME/inside.sh 
 
 CMD [ "bash" , "-c" , "cat $HOME/README.md" ]
