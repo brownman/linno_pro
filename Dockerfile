@@ -13,7 +13,8 @@ figlet \
 xsel \
 toilet \
 pv \
-tree
+tree \
+sudo
 
 #CMD   . $HOME/.bashrc
 
