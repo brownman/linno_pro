@@ -11,7 +11,7 @@ linno_pro
 ```bash
 alias_ubuntu=alias_ubuntu
 
-volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1:/lib/x86_64-linux-gnu/libapparmor.so.1'
+volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1:/usr/lib/x86_64-linux-gnu/libapparmor.so.1'
 volume_ssh="-v $HOME/.ssh:/root/.ssh"
 volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
 volume_bin='-v /usr/bin/docker:/usr/bin/docker'
@@ -21,5 +21,5 @@ $volume_ssh  \
 $volume_socket \
 $volume_bin \
 brownman/linno_pro \
-bash -c start.sh
+bash -c inside.sh
 ```
