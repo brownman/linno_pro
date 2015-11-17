@@ -12,7 +12,7 @@ wget -qO- https://get.docker.com/ | sh
 wget -qO- https://get.docker.com/gpg | sudo apt-key add -
 ln -sf /usr/bin/docker /usr/local/bin/docker
 sudo usermod -aG docker $LOGNAME 
-docker -v | grep 'Docker version 1.8' || ( echo 1>&2 your docker is not updated !; )
+docker -v | grep 'Docker version 1.9' || ( echo 1>&2 your docker is not updated !; )
 ```
 
 
