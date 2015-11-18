@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dev_user=shahar
+dev_user=${1:-shahar}
 domain=linnovate
 endings=net
 sudo apt-get install mailutils -y -q
