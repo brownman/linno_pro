@@ -1,28 +1,14 @@
 #!/usr/bin/env bash
-
+dir_self="$( cd $(dirname $0);pwd )"
+pushd $dir_self >/dev/null
 clear
-unset trace
-unset commander
-unset cleanup
-unset steps
-
-trace(){
-    echo 1>&2 $*
-}
-
-commander(){
-    local args=( $@ )
-    local cmd="${args[@]}"
-    trace [cmd] $cmd
-    eval "$cmd" || { trace got error; exit 1; }
-}
-
+source $dir_self/config.cfg
 
 
 set_env(){
     cmd_inside="${cmd_inside:-'bash -c ./inside.sh'}"
     container_id='brownman/linno_pro:master'
-    alias_ubuntu=alias_ubuntu
+    alias_ubuntu=alias_ubuntu1
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
     volume_ssh="-v $HOME/.ssh:/root/.ssh"
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
@@ -30,6 +16,7 @@ set_env(){
 }
 
 build(){
+    print func
     ( docker images | egrep -h $container_id  )
     local res=$1
     local answer
@@ -44,6 +31,7 @@ build(){
 }
 
 cleanup(){
+    print func
     ( docker ps | grep alias_ubuntu 2>/dev/null )  && { \
         docker stop $alias_ubuntu 2>/dev/null
     docker rm $alias_ubuntu 2>/dev/null
@@ -51,6 +39,7 @@ cleanup(){
 }
 
 run(){
+    print func
     cleanup #2>/dev/null
 
     commander docker run -i --rm --name=$alias_ubuntu --privileged=true \
@@ -63,10 +52,23 @@ run(){
 }
 
 steps(){
+    print func
     local arg=${1:-}
     set_env
     commander "$arg"
 }
+
+
+
+trap_exit(){
+    print func
+    docker stop $alias_ubuntu
+    docker rm $alias_ubuntu
+}
+
+export -f trap_exit
+trap trap_exit EXIT
+
 
 
 echo --- hi ---
@@ -84,3 +86,4 @@ exit 1;
     fi
 }
 echo --- bye ---
+popd >/dev/null
