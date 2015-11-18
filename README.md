@@ -7,6 +7,19 @@ linnovate project magic (aka: linno_pro )
 ### requirements: docker
 
 ```bash
+name=trusty
+#http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
+apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+Then setup the repository:
+
+sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-$name main \
+> /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install docker-engine
+
+OR 
+
+
 sudo apt-get purge docker docker.io
 wget -qO- https://get.docker.com/ | sh
 wget -qO- https://get.docker.com/gpg | sudo apt-key add -
