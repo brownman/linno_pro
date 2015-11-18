@@ -11,6 +11,9 @@ set_env(){
     alias_ubuntu=alias_ubuntu1
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
     volume_ssh="-v $HOME/.ssh:/root/.ssh"
+    
+    volume_tmp="-v /tmp/linno_pro_tmp:/tmp"
+
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
 }
@@ -47,6 +50,7 @@ run(){
         $volume_socket \
         $volume_bin \
         $volume_apparmor \
+        $volume_tmp \
         $container_id  \
         $cmd_inside
 }
@@ -55,6 +59,7 @@ steps(){
     print func
     local arg=${1:-}
     set_env
+    mkdir -p /tmp/linno_pro_tmp
     commander "$arg"
 }
 
