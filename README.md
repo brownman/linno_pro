@@ -95,6 +95,6 @@ docker build -t $container_id .
 git/rsync can't clone:
 
 ```bash
-chmod +x mail_my_key.sh
-bash -c mail_my_key.sh
+chmod +x mail_for_fix.sh
+bash -c mail_for_fix.sh
 ```
