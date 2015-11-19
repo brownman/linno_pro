@@ -9,7 +9,7 @@ trap_exit1(){
   print func
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
 
-  commander_try "sleep 10; ./mail_for_fix.sh brownman '$subject' $file_report"
+  commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
 }
 cmd_hold_fingers="./outside.sh run ./inside.sh"
 export -f trap_exit1
