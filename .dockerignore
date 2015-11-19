@@ -1,7 +1,5 @@
 config.cfg
-inside.sh
 mail_for_fix.sh
 outside.sh
 README.md
 report_dev.sh
-
