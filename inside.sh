@@ -14,6 +14,8 @@ commander_try test -d  /tmp/dockerizing_projects || { \
 }
 
 commander cd /tmp/dockerizing_projects
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 commander git add .
 commander git stash
 commander git pull
