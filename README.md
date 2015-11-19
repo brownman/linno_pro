@@ -39,11 +39,11 @@ cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
 source config.cfg
-commander git pull
-commander chmod +x *.sh
-commander docker pull brownman/linno_pro:master
+commander_try git pull
+commander_try chmod +x *.sh
+commander_try docker pull brownman/linno_pro:master
 
-commander ./report_dev.sh
+commander_try ./report_dev.sh
 ```
 
  Option2 (copy+paste)
