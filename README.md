@@ -39,6 +39,8 @@ cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
 source config.cfg
+commander_try git add .
+commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
 
