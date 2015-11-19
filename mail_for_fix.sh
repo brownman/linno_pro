@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+dir_self="$( cd $(dirname $0);pwd )"
+pushd $dir_self >/dev/null
 
 source config.cfg
 
@@ -15,3 +16,4 @@ dpkg -l sendmail &>/dev/null || { sudo apt-get install sendmail -y -q; }
 
 
 commander "cat $file_input  | mail -s \"$LOGNAME] $subject:\" ${dev_user}@${domain}.${endings}"
+popd >/dev/null
