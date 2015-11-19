@@ -38,10 +38,12 @@ docker -v | grep 'Docker version 1.9' || ( echo 1>&2 your docker is not updated 
 cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
-git pull
-chmod +x outside.sh
-docker pull brownman/linno_pro
-./outside.sh run ./inside.sh
+source config.cfg
+commander git pull
+commander chmod +x *.sh
+commander docker pull brownman/linno_pro
+
+commander ./report_dev.sh
 ```
 
  Option2 (copy+paste)
