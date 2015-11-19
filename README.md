@@ -41,7 +41,7 @@ cd linno_pro
 source config.cfg
 commander git pull
 commander chmod +x *.sh
-commander docker pull brownman/linno_pro
+commander docker pull brownman/linno_pro:master
 
 commander ./report_dev.sh
 ```
