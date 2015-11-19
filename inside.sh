@@ -14,6 +14,8 @@ commander_try test -d  /tmp/dockerizing_projects || { \
 }
 
 commander cd /tmp/dockerizing_projects
+commander git add .
+commander git stash
 commander git pull
 commander chmod +x .ci.sh
 commander ./.ci.sh $user $subject $run_type $step_focus
