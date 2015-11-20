@@ -7,7 +7,6 @@ linnovate project magic (aka: linno_pro )
 ### requirements: docker
 
 ```bash
-name=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
 version=$(docker -v | cut -d' ' -f3 | sed s/,//g | cut -d'.' -f1,2 )
 docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ```
@@ -16,9 +15,10 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 #http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 
 #option 1:
+distro=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
 apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 #setup the repository:
-sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-$name main \
+sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-${distro} main \
 > /etc/apt/sources.list.d/docker.list"
 sudo apt-get update
 sudo apt-get install docker-engine
