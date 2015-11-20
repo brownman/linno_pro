@@ -34,7 +34,7 @@ sudo usermod -aG docker $LOGNAME
 
 ### how to run ?
 
- Option1 
+ Option1: it sends the log to the devops
 ```
 
 cd /tmp
