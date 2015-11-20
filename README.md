@@ -8,7 +8,8 @@ linnovate project magic (aka: linno_pro )
 
 ```bash
 name=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
-
+docker -v | egrep -h 1.8\|1.9 || (
+(
 #http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 Then setup the repository:
@@ -17,16 +18,18 @@ sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-$name main \
 > /etc/apt/sources.list.d/docker.list"
 sudo apt-get update
 sudo apt-get install docker-engine
+) || (
+   sudo apt-get purge docker docker.io
+   wget -qO- https://get.docker.com/ | sh
+   wget -qO- https://get.docker.com/gpg | sudo apt-key add -
+   ln -sf /usr/bin/docker /usr/local/bin/docker
+   sudo usermod -aG docker $LOGNAME 
+   version=$(docker -v | cut -d' ' -f3 | sed s/,//g | cut -d'.' -f1,2 )
+   test $version -gt 1.8 && ( echo ok  ) || (echo err)
+   )
+)
+docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9' || ( echo 1>&2 your docker is not updated !; sleep 5; )
 
-OR 
-
-
-sudo apt-get purge docker docker.io
-wget -qO- https://get.docker.com/ | sh
-wget -qO- https://get.docker.com/gpg | sudo apt-key add -
-ln -sf /usr/bin/docker /usr/local/bin/docker
-sudo usermod -aG docker $LOGNAME 
-docker -v | grep 'Docker version 1.9' || ( echo 1>&2 your docker is not updated !; )
 ```
 
 
