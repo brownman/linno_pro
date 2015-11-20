@@ -62,8 +62,6 @@ volume_ssh="-v $HOME/.ssh:/root/.ssh"
 volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
 volume_bin='-v /usr/bin/docker:/usr/bin/docker'
 
-
-
 docker stop $alias_ubuntu 2>/dev/null
 docker rm $alias_ubuntu 2>/dev/null
 
