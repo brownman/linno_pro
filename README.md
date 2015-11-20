@@ -34,9 +34,8 @@ sudo usermod -aG docker $LOGNAME
 
 ### how to run ?
 
- Option1: it sends the log to the devops
+ Option1:
 ```
-
 cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
@@ -45,9 +44,7 @@ commander_try git add .
 commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
-
 commander_try docker pull brownman/linno_pro:master
-
 commander_try ./report_dev.sh
 ```
 
