@@ -11,9 +11,10 @@ trap_exit1(){
 
   commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
   commander_try ./mail_for_fix.sh
-
+return 0
 }
 cmd_hold_fingers="./outside.sh run ./inside.sh"
 export -f trap_exit1
 #trap 'trap_exit1' EXIT
 ( trap 'trap_exit1' EXIT; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+return 0
