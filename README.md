@@ -12,9 +12,9 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ```
 ### install: 
 ```bash
-#http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 
 #option 1:
+##http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 distro=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
 apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 #setup the repository:
