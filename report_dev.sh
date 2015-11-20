@@ -10,6 +10,8 @@ trap_exit1(){
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
 
   commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
+  commander_try "./mail_for_fix.sh brownman
+
 }
 cmd_hold_fingers="./outside.sh run ./inside.sh"
 export -f trap_exit1
