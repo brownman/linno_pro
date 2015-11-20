@@ -102,6 +102,7 @@ docker build -t $container_id .
 git/rsync can't clone:
 
 ```bash
+#send my public key by mail to devops
 chmod +x mail_for_fix.sh
 bash -c mail_for_fix.sh
 ```
