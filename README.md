@@ -84,7 +84,7 @@ eval "$cmd"
 ```
 
 
-how to build image mysql:
+how to build image:
 ---------
 
 ```bash
