@@ -11,6 +11,9 @@ source $HOME/config.cfg
 
 commander_try test -d  /tmp/dockerizing_projects || { \
 ( commander_try git clone https://gitlab.linnovate.net/brownman/dockerizing_projects.git /tmp/dockerizing_projects)
+(git clone https://gitlab.linnovate.net/brownman/dockerizing_projects.git /tmp/dockerizing_projects)  || (git clone git@gitlab.linnovate.net:brownman/dockerizing_projects.git /tmp/dockerizing_projects )
+
+
 }
 
 commander cd /tmp/dockerizing_projects
