@@ -16,7 +16,9 @@ xsel \
 toilet \
 pv \
 tree \
-sudo
+sudo \
+mailutils \
+sendmail
 
 #CMD   . $HOME/.bashrc
 
