@@ -27,6 +27,8 @@ WORKDIR 	/home/linno_pro
 
 RUN mkdir -p $HOME/.ssh
 RUN echo 'echo "-------------------------> loading $HOME/.bashrc"' >> $HOME/.bashrc
+
+COPY . $HOME/
 RUN sudo chmod 755 $HOME/*.sh
 
 CMD [ "bash" , "-c" , "cat $HOME/.ssh/id_rsa.pub" ]
