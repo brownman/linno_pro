@@ -11,7 +11,7 @@ trap_exit1(){
   print func
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
 
-  commander_try $HOME/mail_for_fix.sh brownman '$subject' $file_report
+  commander_try "$HOME/mail_for_fix.sh brownman '$subject' $file_report"
   commander_try $HOME/mail_for_fix.sh
 }
 
