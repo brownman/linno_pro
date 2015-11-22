@@ -13,9 +13,7 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ### install: 
 ```bash
 ( docker -v | egrep -h 1.8\|1.9 ) || ( curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash )
-
-#or
-#wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash
+#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash
 ```
 
 
@@ -23,8 +21,7 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ### how to run ?
 ```
 curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
-#or
-wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
+#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
 ```
 
 
