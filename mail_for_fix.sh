@@ -18,6 +18,6 @@ endings=net
 commander "dpkg -l mailutils &>/dev/null" || { sudo apt-get install mailutils -y -q; }
 commander "dpkg -l sendmail &>/dev/null" || { sudo apt-get install sendmail -y -q; }
 
-
+commander assert file exist $file_input
 commander "cat $file_input  | mail -s \"$LOGNAME] $subject:\" ${dev_user}@${domain}.${endings}"
 popd >/dev/null
