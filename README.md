@@ -12,7 +12,6 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ```
 ### install: 
 ```bash
-
 #option 1:
 ##http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 distro=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
@@ -22,14 +21,14 @@ sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-${distro} main \
 > /etc/apt/sources.list.d/docker.list"
 sudo apt-get update
 sudo apt-get install docker-engine
+sudo usermod -aG docker $LOGNAME
 
 #option 2:
 sudo apt-get purge docker docker.io
 wget -qO- https://get.docker.com/ | sh
 wget -qO- https://get.docker.com/gpg | sudo apt-key add -
 ln -sf /usr/bin/docker /usr/local/bin/docker
-
-
+sudo usermod -aG docker $LOGNAME
 ```
 
 
@@ -43,7 +42,6 @@ test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
 source config.cfg
 
-commander_try sudo usermod -aG docker $LOGNAME 
 commander_try git diff && ( git reset --hard origin/master )
 #commander_try git add .
 #commander_try git stash
