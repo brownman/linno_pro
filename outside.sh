@@ -66,14 +66,14 @@ steps(){
 
 
 
-trap_exit(){
+trap_exit_outside_sh(){
     print func
-    docker stop $alias_ubuntu
-    docker rm $alias_ubuntu
+    commander_try docker stop $alias_ubuntu
+    commander_try docker rm $alias_ubuntu
 }
 
-export -f trap_exit
-trap trap_exit EXIT
+export -f trap_exit_outside_sh
+trap trap_exit_outside_sh ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP
 
 
 
