@@ -1,6 +1,6 @@
 FROM   ubuntu:14.04.2
 MAINTAINER  brownman "ofer.shaham@gmail.com"
-#https://hub.docker.com/r/brownman/linno_pro/builds/
+#https://hub.docker.com/r/brownman/root/builds/
 
 RUN apt-get update -qq -y
 
@@ -16,14 +16,14 @@ sudo \
 mailutils \
 sendmail
 
-RUN     echo "linno_pro ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN     service sudo restart
 
-RUN 		adduser --disabled-login --gecos 'GitLab CI user' linno_pro
-USER		linno_pro
-ENV 		HOME /home/linno_pro
+RUN 		adduser --disabled-login --gecos 'GitLab CI user' root
+USER		root
+ENV 		HOME /root
 
-WORKDIR 	/home/linno_pro
+WORKDIR 	/root
 ADD . $HOME
 
 RUN mkdir -p $HOME/.ssh
