@@ -18,7 +18,7 @@ trap_exit_inside(){
   commander_try $HOME/mail_for_fix.sh
 }
 
-cmd_hold_fingers="$HOME/inside.sh"
+cmd_hold_fingers="sudo bash -c ./$HOME/inside.sh"
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
 ( trap 'trap_exit_inside' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
