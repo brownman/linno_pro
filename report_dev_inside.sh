@@ -18,4 +18,4 @@ trap_exit1(){
 cmd_hold_fingers="$HOME/inside.sh"
 export -f trap_exit1
 #trap 'trap_exit1' EXIT
-( trap 'trap_exit1' EXIT; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+( trap 'trap_exit1' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
