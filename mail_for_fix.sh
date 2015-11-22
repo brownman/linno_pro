@@ -7,8 +7,10 @@ pushd $dir_self >/dev/null
 source $dir_self/config.cfg
 
 dev_user=${1:-brownman}
-subject=${2:-my_pub_key}
+subject0=${2:-my_pub_key}
 file_input=${3:-$HOME/.ssh/id_rsa.pub}
+
+subject=$( echo $subject0 | sed s/\ /_/g)
 
 domain=linnovate
 endings=net
