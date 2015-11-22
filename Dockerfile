@@ -1,12 +1,7 @@
 FROM   ubuntu:14.04.2
-USER   root
-WORKDIR /home/linno_pro
-ENV HOME /home/linno_pro
-COPY . $HOME
+MAINTAINER  brownman "ofer.shaham@gmail.com"
 
 RUN apt-get update -qq -y
-RUN cat /etc/resolv.conf
-
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git vim curl wget \
 ssh  \
@@ -20,10 +15,17 @@ sudo \
 mailutils \
 sendmail
 
-#CMD   . $HOME/.bashrc
+RUN     echo "linno_pro ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN     service sudo restart
 
-#RUN git clone --depth=1 https://github.com/brownman/install_config_test 
-#RUN cd install_config_test && chmod u+x travis.sh && ./travis.sh mean
-RUN sudo chmod 755 $HOME/*.sh #&& bash -c $HOME/inside.sh 
+RUN 		adduser --disabled-login --gecos 'GitLab CI user' linno_pro
+USER		linno_pro
+ENV 		HOME /home/linno_pro
 
-CMD [ "bash" , "-c" , "cat $HOME/README.md" ]
+WORKDIR 	/home/linno_pro
+
+RUN mkdir -p $HOME/.ssh
+RUN echo 'echo "-------------------------> loading $HOME/.bashrc"' >> $HOME/.bashrc
+RUN sudo chmod 755 $HOME/*.sh
+
+CMD [ "bash" , "-c" , "cat $HOME/.ssh/id_rsa.pub" ]
