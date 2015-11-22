@@ -6,7 +6,7 @@ cd $HOME
 source config.cfg
 file_report="/tmp/all_$(date +%s)"
 
-trap_exit1(){
+trap_exit_inside(){
   local res=$?
   print func
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
@@ -16,6 +16,6 @@ trap_exit1(){
 }
 
 cmd_hold_fingers="$HOME/inside.sh"
-export -f trap_exit1
-#trap 'trap_exit1' EXIT
-( trap 'trap_exit1' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+export -f trap_exit_inside
+#trap 'trap_exit_inside' EXIT
+( trap 'trap_exit_inside' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
