@@ -20,15 +20,6 @@ curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.s
 ```
 
 
-how to build image:
----------
-
-```bash
-container_id=brownman/linno_pro
-docker build -t $container_id .
-```
-
-
 --------
 
 
