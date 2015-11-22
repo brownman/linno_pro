@@ -45,8 +45,8 @@ commander_try git add .
 commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
-( sudo docker images | grep linno_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )
-( commander_try sudo ./report_dev_outside.sh ) || true
+( commander_try sudo docker pull brownman/linno_pro:master )
+( commander_try sudo ./report_dev_outside.sh )
 ```
 
  Option2 (copy+paste)
