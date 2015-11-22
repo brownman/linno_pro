@@ -36,6 +36,7 @@ sudo usermod -aG docker $LOGNAME
 
  Option1:
 ```
+set  +e
 cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
@@ -44,8 +45,8 @@ commander_try git add .
 commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
-(( sudo docker images | grep linno_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )) || true
-( commander_try sudo ./report_dev.sh ) || true
+( sudo docker images | grep linno_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )
+( commander_try sudo ./report_dev_outside.sh ) || true
 ```
 
  Option2 (copy+paste)
