@@ -29,7 +29,7 @@ how to build image:
 ---------
 
 ```bash
-container_id=some_name
+container_id=brownman/linno_pro
 docker build -t $container_id .
 ```
 
