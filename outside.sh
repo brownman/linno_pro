@@ -46,7 +46,7 @@ run(){
     print func
     cleanup #2>/dev/null
 
-    commander docker run -it --rm --name=$alias_ubuntu --privileged=true \
+    commander docker run -i  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
