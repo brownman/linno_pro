@@ -10,7 +10,7 @@ set_env(){
     container_id='brownman/linno_pro:master'
     alias_ubuntu=alias_ubuntu1
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
-    volume_ssh="-v $HOME/.ssh:/$HOME_INSIDE/.ssh"
+    volume_ssh="-v $HOME/.ssh:$HOME_INSIDE/.ssh"
     
     volume_tmp="-v /tmp/linno_pro_tmp:/tmp"
 
