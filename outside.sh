@@ -5,7 +5,7 @@ clear
 source $dir_self/config.cfg
 
 set_env(){
-    HOME_INSIDE='/home/linno_pro'
+    HOME_INSIDE=/root
     cmd_inside="${cmd_inside:-'bash -c ./report_dev_inside.sh'}"
     container_id='brownman/linno_pro:master'
     alias_ubuntu=alias_ubuntu1
