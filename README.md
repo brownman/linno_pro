@@ -12,26 +12,10 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 ```
 ### install: 
 ```bash
-#option 1:
-##http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
-distro=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
-apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-#setup the repository:
-sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-${distro} main \
-> /etc/apt/sources.list.d/docker.list"
-sudo apt-get update
-sudo apt-get install docker-engine
-sudo usermod -aG docker $LOGNAME
+( docker -v | egrep -h 1.8\|1.9 ) || ( curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash )
 
-#option 2:
-sudo apt-get purge docker docker.io
-wget -qO- https://get.docker.com/ | sh
-wget -qO- https://get.docker.com/gpg | sudo apt-key add -
-ln -sf /usr/bin/docker /usr/local/bin/docker
-sudo usermod -aG docker $LOGNAME
-
-#option3
-#goto: https://github.com/docker/docker/tree/master/experimental
+#or
+#wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash
 ```
 
 
