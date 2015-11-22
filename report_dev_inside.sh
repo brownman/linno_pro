@@ -21,4 +21,4 @@ trap_exit_inside(){
 cmd_hold_fingers="sudo bash -c $HOME/inside.sh"
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
-( trap 'trap_exit_inside' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+( trap 'trap_exit_inside' ERR EXIT SIGHUP SIGINT SIGKILL SIGTERM SIGSTOP; commander_try "env;sleep 10;$cmd_hold_fingers  &> >(tee $file_report);"  )
