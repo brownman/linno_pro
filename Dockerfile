@@ -24,11 +24,11 @@ USER		linno_pro
 ENV 		HOME /home/linno_pro
 
 WORKDIR 	/home/linno_pro
+ADD . $HOME
 
 RUN mkdir -p $HOME/.ssh
 RUN echo 'echo "-------------------------> loading $HOME/.bashrc"' >> $HOME/.bashrc
 
-COPY . $HOME/
 RUN sudo chmod 755 $HOME/*.sh
 
 CMD [ "bash" , "-c" , "cat $HOME/.ssh/id_rsa.pub" ]
