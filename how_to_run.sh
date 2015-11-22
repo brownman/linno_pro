@@ -48,6 +48,6 @@ eval "$cmd"
 
 set  +e
 
-cmd="$@"
+cmd="${@:-option1}"
 echo [cmd] $cmd
 (eval "$cmd") || true
