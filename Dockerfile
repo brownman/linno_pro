@@ -16,10 +16,10 @@ sudo \
 mailutils \
 sendmail
 
-RUN     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN     service sudo restart
+#RUN     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+#RUN     service sudo restart
 
-RUN 		adduser --disabled-login --gecos 'GitLab CI user' root
+#RUN 		adduser --disabled-login --gecos 'GitLab CI user' root
 USER		root
 ENV 		HOME /root
 
