@@ -4,6 +4,9 @@ set -u
 
 cd $HOME
 source config.cfg
+commander_try "chmod +x *.sh"
+
+
 file_report="/tmp/all_$(date +%s)"
 
 trap_exit_inside(){
