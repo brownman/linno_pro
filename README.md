@@ -29,8 +29,7 @@ wget -qO- https://get.docker.com/ | sh
 wget -qO- https://get.docker.com/gpg | sudo apt-key add -
 ln -sf /usr/bin/docker /usr/local/bin/docker
 
-#BOTH NEED:
-sudo usermod -aG docker $LOGNAME 
+
 ```
 
 
@@ -43,11 +42,13 @@ cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
 cd linno_pro
 source config.cfg
+
+commander_try sudo usermod -aG docker $LOGNAME 
 commander_try git add .
 commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
-( commander_try sudo docker pull brownman/linno_pro:master )
+( commander_try  sudo docker images | grep lino_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )
 ( commander_try sudo ./report_dev_outside.sh )
 ```
 
