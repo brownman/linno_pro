@@ -19,7 +19,7 @@ docker -v | egrep -h 'Docker version 1.8'\|'Docker version 1.9'
 
 
 ### how to run ?
-```
+```bash
 curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
 #or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
 ```
