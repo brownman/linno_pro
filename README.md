@@ -55,7 +55,7 @@ commander_try chmod +x *.sh
  Option2 (copy+paste)
 
 ```bash
-cmd_bash="${cmd_bash:-./inside.sh}"
+cmd_bash="${cmd_bash:-./report_dev_inside.sh}"
 cmd_inside="bash -c $cmd_bash"
 
 alias_ubuntu=alias_ubuntu
