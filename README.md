@@ -28,6 +28,8 @@ sudo apt-get purge docker docker.io
 wget -qO- https://get.docker.com/ | sh
 wget -qO- https://get.docker.com/gpg | sudo apt-key add -
 ln -sf /usr/bin/docker /usr/local/bin/docker
+
+#BOTH NEED:
 sudo usermod -aG docker $LOGNAME 
 ```
 
