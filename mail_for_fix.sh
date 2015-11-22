@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -u
+
 dir_self="$( cd $(dirname $0);pwd )"
 pushd $dir_self >/dev/null
 
