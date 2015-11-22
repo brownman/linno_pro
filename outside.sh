@@ -35,9 +35,10 @@ build(){
 
 cleanup(){
     print func
-    ( docker ps | grep alias_ubuntu 2>/dev/null )  && { \
+    ( docker ps | grep $alias_ubuntu 2>/dev/null )  && { \
         docker stop $alias_ubuntu 2>/dev/null
     docker rm $alias_ubuntu 2>/dev/null
+        docker rm -f $alias_ubuntu 2>/dev/null
 }
 }
 
@@ -45,7 +46,7 @@ run(){
     print func
     cleanup #2>/dev/null
 
-    commander docker run -i --rm --name=$alias_ubuntu --privileged=true \
+    commander docker run -it --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
