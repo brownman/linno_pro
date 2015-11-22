@@ -26,7 +26,7 @@ curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.s
 ####  Troobleshoot
 
 
-git/rsync can't clone:
+- clone error (rsync, git):
 
 ```bash
 #send my public key by mail to devops
