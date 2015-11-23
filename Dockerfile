@@ -31,4 +31,4 @@ RUN echo 'echo 1>&2 "-------------------------> loading $HOME/.bashrc";echo 1>&2
 
 #RUN sudo chmod 755 $HOME/*.sh
 
-CMD [ "bash" , "-c" , "eval $cmd_start" ]
+CMD [ "bash" , "-c" , "ls -la $HOME" ]
