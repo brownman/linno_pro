@@ -36,7 +36,6 @@ docker rm $alias_ubuntu 2>/dev/null
 
 cmd="docker pull $container_id; docker run -it --rm --name=$alias_ubuntu --privileged=true \
 $ports \
-$ports \
 $volume_ssh  \
 $volume_socket \
 $volume_bin \
