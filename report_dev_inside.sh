@@ -15,7 +15,7 @@ trap_exit_inside(){
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
 
   commander_try "$HOME/mail_for_fix.sh brownman '$subject' $file_report"
-  commander_try $HOME/mail_for_fix.sh
+  #commander_try $HOME/mail_for_fix.sh
 }
 
 cmd_hold_fingers="bash -c $HOME/inside.sh"
