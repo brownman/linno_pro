@@ -6,7 +6,7 @@ source $dir_self/config.cfg
 
 set_env(){
     HOME_INSIDE=/root
-    cmd_inside="${cmd_inside:-'bash -c ./report_dev_inside.sh'}"
+ cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv $HOME/linno_pro/* .;chmod 755 $HOME/*.sh; ls -la /root; ./report_dev_inside.sh'"
     container_id='brownman/linno_pro:master'
    export alias_ubuntu=alias_ubuntu1
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
