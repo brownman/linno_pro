@@ -10,7 +10,7 @@ trap_exit_outside(){
   print func $res
   subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
   
-  trace some error has occured !
+  #trace some error has occured !
  # commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
 #  commander_try ./mail_for_fix.sh
 return $res
