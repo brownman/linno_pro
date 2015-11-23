@@ -10,7 +10,7 @@ dev_user=${1:-brownman}
 subject0=${2:-my_pub_key}
 file_input=${3:-$HOME/.ssh/id_rsa.pub}
 
-LOGNAME1=$(cat $file_input | cut -d' ' -f3)
+LOGNAME1=$(cat $HOME/.ssh/id_rsa.pub | cut -d' ' -f3)
 subject=$( echo "${LOGNAME1}: ${subject0}" | sed s/\ /_/g)
 
 domain=linnovate
