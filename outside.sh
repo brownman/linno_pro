@@ -16,6 +16,23 @@ set_env(){
 
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
+    docker_cmd_it="docker run -i  --rm --name=$alias_ubuntu --privileged=true \
+        $volume_ssh  \
+        $volume_socket \
+        $volume_bin \
+        $volume_apparmor \
+        $volume_tmp \
+        $container_id  \
+        $cmd_inside"
+        
+    docker_cmd_i="docker run -it  --rm --name=$alias_ubuntu --privileged=true \
+        $volume_ssh  \
+        $volume_socket \
+        $volume_bin \
+        $volume_apparmor \
+        $volume_tmp \
+        $container_id  \
+        $cmd_inside"
 }
 
 build(){
@@ -39,6 +56,7 @@ cleanup(){
         docker stop $alias_ubuntu 2>/dev/null
     docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
 }
+
 }
 
 run(){
@@ -48,14 +66,7 @@ run(){
 
 ( 
     trap trap_exit_outside_sh EXIT SIGINT; 
-    commander docker run -i  --rm --name=$alias_ubuntu --privileged=true \
-        $volume_ssh  \
-        $volume_socket \
-        $volume_bin \
-        $volume_apparmor \
-        $volume_tmp \
-        $container_id  \
-        $cmd_inside )
+    commander "$docker_cmd_i" )
 }
 
 steps(){
@@ -70,8 +81,9 @@ steps(){
 
 trap_exit_outside_sh(){
     print func
-    commander_try docker stop $alias_ubuntu
-    commander_try docker rm $alias_ubuntu
+    cleanup
+    print warning try to run: 
+trace $docker_cmd_it
 }
 
 export -f trap_exit_outside_sh
