@@ -11,7 +11,7 @@ commander_try git pull
 commander_try chmod +x *.sh
 ( commander_try  sudo docker images | grep lino_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )
 ( commander_try sudo ./report_dev_outside.sh ) || { echo -n "try newer image by running:";echo sudo docker pull brownman/linno_pro:master; exit 1;  }
-echo $?
+
 }
 
 
