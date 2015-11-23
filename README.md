@@ -25,11 +25,12 @@ curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.s
 
 ####  Troobleshoot
 
-
-- clone error (rsync, git):
-
 ```bash
+#cloning error:
 #send my public key by mail to devops
 chmod +x mail_for_fix.sh
 bash -c mail_for_fix.sh
+
+#rm password prompt ssh commands:
+ssh-keygen -f id_rsa -p
 ```
