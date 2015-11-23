@@ -1,3 +1,4 @@
+reset || clear
 option1(){
 cd /tmp
 test -d linno_pro || { git clone https://github.com/brownman/linno_pro.git; }
