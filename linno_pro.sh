@@ -50,4 +50,5 @@ set  +e
 
 cmd="${@:-option1}"
 echo [cmd] $cmd
-(eval "$cmd") || true
+set +e
+(eval "$cmd") 
