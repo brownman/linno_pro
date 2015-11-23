@@ -16,7 +16,7 @@ set_env(){
 
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
-    docker_cmd_it="docker run -i  --rm --name=$alias_ubuntu --privileged=true \
+    docker_cmd_it="docker run -it  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
@@ -25,7 +25,7 @@ set_env(){
         $container_id  \
         bash"
         
-    docker_cmd_i="docker run -it  --rm --name=$alias_ubuntu --privileged=true \
+    docker_cmd_i="docker run -i  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
