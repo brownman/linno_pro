@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -u
-
+ 
 dir_self="$( cd $(dirname $0);pwd )"
 pushd $dir_self >/dev/null
 
@@ -10,7 +10,8 @@ dev_user=${1:-brownman}
 subject0=${2:-my_pub_key}
 file_input=${3:-$HOME/.ssh/id_rsa.pub}
 
-subject=$( echo "${LOGNAME}: ${subject0}" | sed s/\ /_/g)
+LOGNAME1=$(cat $file_input | cut -d' ' -f3)
+subject=$( echo "${LOGNAME1}: ${subject0}" | sed s/\ /_/g)
 
 domain=linnovate
 endings=net
