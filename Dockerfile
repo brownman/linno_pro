@@ -31,4 +31,4 @@ WORKDIR 	/root
 
 #RUN sudo chmod 755 $HOME/*.sh
 
-CMD [ "bash" , "-c" , "$cmd_start" ]
+CMD [ "bash" , "-c" , "ls -la $HOME" ]
