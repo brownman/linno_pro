@@ -24,7 +24,7 @@ USER		root
 ENV 		HOME /root
 
 WORKDIR 	/root
-ENV cmd_start 'git clone https://github.com/brownman/linno_pro.git .;chmod 755 $HOME/*.sh'
+ENV cmd_start 'git clone https://github.com/brownman/linno_pro.git; mv $HOME/linno_pro/* .;chmod 755 $HOME/*.sh'
 
 RUN mkdir -p $HOME/.ssh
 RUN echo 'echo 1>&2 "-------------------------> loading $HOME/.bashrc";echo 1>&2 "[cmd]$cmd_start"; eval "$cmd_start"' >> $HOME/.bashrc
