@@ -24,11 +24,11 @@ USER		root
 ENV 		HOME /root
 
 WORKDIR 	/root
-ADD . $HOME
+ENV cmd_start 'git clone https://github.com/brownman/linno_pro.git .;chmod 755 $HOME/*.sh'
 
 RUN mkdir -p $HOME/.ssh
-RUN echo 'echo "-------------------------> loading $HOME/.bashrc"' >> $HOME/.bashrc
+RUN echo 'echo 1>&2 "-------------------------> loading $HOME/.bashrc";echo 1>&2 "[cmd]$cmd_start"; eval "$cmd_start"' >> $HOME/.bashrc
 
-RUN sudo chmod 755 $HOME/*.sh
+#RUN sudo chmod 755 $HOME/*.sh
 
-CMD [ "bash" , "-c" , "cat $HOME/.ssh/id_rsa.pub" ]
+CMD [ "bash" , "-c" , "eval $cmd_start" ]
