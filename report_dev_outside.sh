@@ -12,7 +12,7 @@ trap_exit_outside(){
   commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
   commander_try ./mail_for_fix.sh
 }
-cmd_hold_fingers="./outside.sh run sudo ./report_dev_inside.sh"
+cmd_hold_fingers="./outside.sh run ./report_dev_inside.sh"
 export -f trap_exit_outside
 #trap 'trap_exit1' EXIT
 
