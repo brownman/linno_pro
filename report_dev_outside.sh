@@ -13,6 +13,7 @@ trap_exit_outside(){
   trace some error has occured !
  # commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
 #  commander_try ./mail_for_fix.sh
+return $res
 }
 cmd_hold_fingers="./outside.sh run bash -c ./report_dev_inside.sh"
 export -f trap_exit_outside
