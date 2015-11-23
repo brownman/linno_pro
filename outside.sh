@@ -80,10 +80,12 @@ steps(){
 
 
 trap_exit_outside_sh(){
+    local res=$?
     print func
     cleanup
     print warning try to run: 
 trace $docker_cmd_it
+return $res
 }
 
 export -f trap_exit_outside_sh
