@@ -16,6 +16,9 @@ sudo \
 mailutils \
 sendmail
 
+EXPOSE 25
+EXPOSE 143
+EXPOSE 587
 #RUN     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 #RUN     service sudo restart
 
