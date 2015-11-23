@@ -37,15 +37,14 @@ cleanup(){
     print func
     ( docker ps | grep $alias_ubuntu 2>/dev/null )  && { \
         docker stop $alias_ubuntu 2>/dev/null
-    docker rm $alias_ubuntu 2>/dev/null
-        docker rm -f $alias_ubuntu 2>/dev/null
+    docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
 }
 }
 
 run(){
     print func
     cleanup #2>/dev/null
-trap trap_exit_outside_sh EXIT SIGINT 
+#trap trap_exit_outside_sh EXIT SIGINT 
 
 ( 
     trap trap_exit_outside_sh EXIT SIGINT; 
