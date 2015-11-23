@@ -12,7 +12,7 @@ set_env(){
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
     volume_ssh="-v $HOME/.ssh:$HOME_INSIDE/.ssh"
     
-    volume_tmp="-v /tmp/linno_pro_tmp:/tmp"
+    volume_tmp="-v /tmp:/tmp"
 
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
