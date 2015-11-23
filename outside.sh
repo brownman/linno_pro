@@ -23,7 +23,7 @@ set_env(){
         $volume_apparmor \
         $volume_tmp \
         $container_id  \
-        $cmd_inside"
+        bash"
         
     docker_cmd_i="docker run -it  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
