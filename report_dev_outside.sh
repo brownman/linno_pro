@@ -8,7 +8,7 @@ trap_exit_outside(){
 
   local res=$?
   print func $res
-  subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
+  subject="$LOGNAME]  outside: $( date +%H:%M:%S) ] $res"
   
   #trace some error has occured !
  commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
