@@ -24,7 +24,7 @@ set_env(){
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
-        -v IP_HOST \
+        -e IP_HOST \
         $container_id  \
         bash"
         
@@ -34,7 +34,7 @@ set_env(){
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
-        -v IP_HOST \
+        -e IP_HOST \
         $container_id  \
         $cmd_inside"
 }
