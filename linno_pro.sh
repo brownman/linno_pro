@@ -10,6 +10,8 @@ commander_try git diff && ( git reset --hard origin/master )
 #commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
+
+
 ( commander_try  docker images | grep linno_pro ) || ( commander_try docker pull brownman/linno_pro:master )
 ( commander_try  ./report_dev_outside.sh ) || { echo -n "try newer image by running:";echo docker pull brownman/linno_pro:master; exit 1;  }
 
@@ -55,7 +57,5 @@ echo [cmd] $cmd
 set +e
 sudo echo hi $LOGNAME
 sleep 3
-commander sudo usermod -aG docker $LOGNAME
-commander_try sudo service docker status || { sudo service docker restart; }
 
 (eval "$cmd") 
