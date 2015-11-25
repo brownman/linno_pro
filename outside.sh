@@ -11,7 +11,7 @@ set_env(){
     HOME_INSIDE=/root
      cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv ./linno_pro/* .;chmod 755 *.sh; ls -la /root; ./report_dev_inside.sh'"
     container_id='brownman/linno_pro:master'
-   export alias_ubuntu=alias_ubuntu1
+    alias_ubuntu="alias_ubuntu$(date +%s)"
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
     volume_ssh="-v $HOME/.ssh:$HOME_INSIDE/.ssh"
     
