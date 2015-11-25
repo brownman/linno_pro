@@ -6,9 +6,10 @@ source $dir_self/config.cfg
 
 set_env(){
     IP_HOST=$(ip route  get 1  | head -1 | cut -d'c' -f2 | xargs)
+    env_ip_host="-e IP_HOST=$IP_HOST"
 
     HOME_INSIDE=/root
- cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv ./linno_pro/* .;chmod 755 *.sh; ls -la /root; ./report_dev_inside.sh'"
+     cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv ./linno_pro/* .;chmod 755 *.sh; ls -la /root; ./report_dev_inside.sh'"
     container_id='brownman/linno_pro:master'
    export alias_ubuntu=alias_ubuntu1
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
@@ -24,7 +25,7 @@ set_env(){
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
-        -e IP_HOST \
+        $env_ip_host \
         $container_id  \
         bash"
         
@@ -34,7 +35,7 @@ set_env(){
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
-        -e IP_HOST \
+        $env_ip_host  \
         $container_id  \
         $cmd_inside"
 }
