@@ -53,4 +53,6 @@ set  +e
 cmd="${@:-option1}"
 echo [cmd] $cmd
 set +e
+sudo echo hi $LOGNAME
+sleep 3
 (eval "$cmd") 
