@@ -11,6 +11,12 @@ linnovate project magic (aka: linno_pro )
 #or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh |  bash
 ```
 
+### ensure docker is running and current user is part of docker group
+```bash
+sudo usermod -aG docker $LOGNAME
+sudo service docker status || { sudo service docker restart; }
+```
+
 
 
 ### how to run ?
