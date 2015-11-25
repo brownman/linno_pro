@@ -10,8 +10,8 @@ commander_try git diff && ( git reset --hard origin/master )
 #commander_try git stash
 commander_try git pull
 commander_try chmod +x *.sh
-( commander_try  sudo docker images | grep linno_pro ) || ( commander_try sudo docker pull brownman/linno_pro:master )
-( commander_try sudo ./report_dev_outside.sh ) || { echo -n "try newer image by running:";echo sudo docker pull brownman/linno_pro:master; exit 1;  }
+( commander_try  docker images | grep linno_pro ) || ( commander_try docker pull brownman/linno_pro:master )
+( commander_try  ./report_dev_outside.sh ) || { echo -n "try newer image by running:";echo docker pull brownman/linno_pro:master; exit 1;  }
 
 }
 
