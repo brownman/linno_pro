@@ -16,8 +16,8 @@ subject=$( echo "${LOGNAME1}: ${subject0}" | sed s/\ /_/g)
 domain=linnovate
 endings=net
 
-commander "dpkg -l mailutils &>/dev/null" || { commander_try sudo apt-get install mailutils -y -q --force-yes; }
-commander "dpkg -l sendmail &>/dev/null" || { commander_try sudo apt-get install sendmail -y -q --force-yes; }
+commander_try "dpkg -l mailutils &>/dev/null" || { commander sudo apt-get install mailutils -y -q --force-yes; }
+commander_try "dpkg -l sendmail &>/dev/null" || { commander sudo apt-get install sendmail -y -q --force-yes; }
 
 commander test -f $file_input
 commander "cat $file_input  | mail -s '$subject' ${dev_user}@${domain}.${endings}"
