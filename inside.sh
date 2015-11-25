@@ -17,9 +17,10 @@ test $? -eq 0 && { \
 commander cd /tmp/dockerizing_projects
 #git config --global user.email "you@example.com"
 #git config --global user.name "Your Name"
+#commander git add .
+#commander git stash
 commander_try cat .git/config 
-commander git add .
-commander git stash
+commander_try git reset --hard origin/master
 commander git pull
 commander chmod +x .ci.sh
 commander ./.ci.sh $user $subject $run_type $step_focus
