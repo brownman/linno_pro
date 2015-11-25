@@ -29,14 +29,19 @@ curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.s
 --------
 
 
-####  Troobleshoot
+####  Troobleshoot: 
+
+- share my public key with IT department:
 
 ```bash
 #cloning error:
 #send my public key by mail to devops
 chmod +x mail_for_fix.sh
 bash -c mail_for_fix.sh
+```
 
-#rm password prompt ssh commands:
+- password-less SSH login:
+
+```bash
 ssh-keygen -f id_rsa -p
 ```
