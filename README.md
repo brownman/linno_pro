@@ -7,16 +7,16 @@ linnovate project magic (aka: linno_pro )
 ### requirements: docker
 
 ```bash
-( docker -v | egrep -h 1.8\|1.9 ) || ( curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash )
-#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | bash
+( docker -v | egrep -h 1.8\|1.9 ) || ( curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | sudo bash )
+#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh | sudo bash
 ```
 
 
 
 ### how to run ?
 ```bash
-curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
-#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | bash
+curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | sudo bash
+#or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh | sudo bash
 ```
 
 
