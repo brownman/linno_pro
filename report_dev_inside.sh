@@ -12,7 +12,7 @@ file_report="/tmp/all_$(date +%s)"
 trap_exit_inside(){
   local res=$?
   print func
-  subject="$LOGNAME]  $( date +%H:%M:%S) ] $res"
+  subject="$LOGNAME]  $( date +%H:%M:%S) ] inside: $res"
 
   commander_try "$HOME/mail_for_fix.sh brownman '$subject' $file_report"
   #commander_try $HOME/mail_for_fix.sh
