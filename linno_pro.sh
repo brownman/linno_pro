@@ -55,4 +55,7 @@ echo [cmd] $cmd
 set +e
 sudo echo hi $LOGNAME
 sleep 3
+commander sudo usermod -aG docker $LOGNAME
+commander_try sudo service docker status || { sudo service docker restart; }
+
 (eval "$cmd") 
