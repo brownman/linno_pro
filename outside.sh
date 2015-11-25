@@ -5,6 +5,8 @@ clear
 source $dir_self/config.cfg
 
 set_env(){
+    IP_HOST=$(ip route  get 1  | head -1 | cut -d'c' -f2 | xargs)
+
     HOME_INSIDE=/root
  cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv ./linno_pro/* .;chmod 755 *.sh; ls -la /root; ./report_dev_inside.sh'"
     container_id='brownman/linno_pro:master'
@@ -16,21 +18,23 @@ set_env(){
 
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
-    docker_cmd_it="docker run -it  --rm --default-network --name=$alias_ubuntu --privileged=true \
+    docker_cmd_it="docker run -it  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
+        -v IP_HOST \
         $container_id  \
         bash"
         
-    docker_cmd_i="docker run -i  --rm --default-network --name=$alias_ubuntu --privileged=true \
+    docker_cmd_i="docker run -i  --rm --name=$alias_ubuntu --privileged=true \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
         $volume_apparmor \
         $volume_tmp \
+        -v IP_HOST \
         $container_id  \
         $cmd_inside"
 }
