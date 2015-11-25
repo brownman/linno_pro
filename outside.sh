@@ -87,8 +87,12 @@ trap_exit_outside_sh(){
     local res=$?
     print func
     cleanup
-  print warning try to run: 
-trace $docker_cmd_it
+    
+if [ $res -ne 0 ];then
+    print warning try to run: 
+    trace $docker_cmd_it
+fi
+
 print line
 return $res
 }
