@@ -71,5 +71,5 @@ EXPOSE 3000
 #RUN sudo chmod 755 $HOME/*.sh
 
 
-CMD node /opt/wetty/app.js -p 3000
+CMD node /root/wetty/app.js -p 3000
 #CMD [ "bash" , "-c" , "ls -la $HOME" ]
