@@ -33,7 +33,7 @@ RUN git clone https://github.com/nathanleclaire/wetty.git && \
         cd wetty && \
             npm install
 
-RUN sed 's@/bin/login@/shell@' -i /root/wetty/app.js
+RUN sed 's@/bin/login@/bin/bash@' -i /root/wetty/app.js
 
 
 
