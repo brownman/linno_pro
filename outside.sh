@@ -18,7 +18,6 @@ set_env_docker_cmds(){
 
     HOME_INSIDE=/root
     cmd_node='node /root/wetty/app.js -p 3000'
-    #cmd_screen='apt-get install screen -yqq'
     cmd_bash="git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh"
 #& disown; 
 
@@ -39,7 +38,8 @@ chmod +x /tmp/ofer.sh
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
     ports='-p 3001:3000'
 
-    read -t 10 -p "Hit 'n' or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown;  echo y | screen;   $cmd_bash'";  }
+    read -t 10 -p "Hit 'n' or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown;  \
+        $cmd_bash'";  }
     docker_cmd_it="docker run  -it  --rm --name=$alias_ubuntu --privileged=false \
         $volume_ssh  \
         $volume_socket \
@@ -108,7 +108,7 @@ steps(){
 
 
 
-trap_exit_and_sigint_outside(){
+trap_exit_outside(){
 
   local res=$?
   print func $res
@@ -127,10 +127,10 @@ return $res
 start(){
 local cmd_hold_fingers=steps
 #"bash -c ./inside.sh"
-export -f trap_exit_and_sigint_outside
+export -f trap_exit_outside
 
 
-#trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
+trap 'trap_exit_outside' EXIT SIGINT;
 set +e
 
 (  
