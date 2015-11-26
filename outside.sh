@@ -72,8 +72,10 @@ build(){
 
 cleanup(){
     print func
-    commander_try docker stop $alias_ubuntu 2>/dev/null
+docker ps | grep $alias_ubuntu && { \
+    commander_try docker stop $alias_ubuntu 2>/dev/null; 
     commander_try docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
+    }
 }
 
 run(){
