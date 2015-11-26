@@ -26,6 +26,7 @@ RUN apt-get -qqy update && \
     toilet \
     pv \
     tree \
+    screen \
     sudo 
 
 RUN ln -s /usr/bin/nodejs /usr/bin/node
