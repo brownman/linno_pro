@@ -17,7 +17,7 @@ ENV TERM xterm-256color
 
 # Install node & npm
 RUN apt-get -qqy update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install vim git \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install vim git nodejs npm \
     curl wget \
     ssh  \
     rsync  \
@@ -28,7 +28,9 @@ RUN apt-get -qqy update && \
     tree \
     sudo 
 
-RUN curl https://www.npmjs.com/install.sh | clean=no sh
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+#RUN curl https://www.npmjs.com/install.sh | clean=no sh
 RUN git clone https://github.com/nathanleclaire/wetty.git && \
         cd wetty && \
             npm install
