@@ -22,7 +22,8 @@ set_env_docker_cmds(){
      cmd_inside="bash -c '$cmd_node & disown; echo;echo;echo; sleep 5;  git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh'"
      
     container_id='brownman/linno_pro:master'
-    alias_ubuntu="alias_ubuntu$(date +%s)"
+    alias_ubuntu="alias_ubuntu"
+    #$(date +%s)"
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
     volume_ssh="-v $HOME/.ssh:$HOME_INSIDE/.ssh"
     
@@ -71,8 +72,8 @@ build(){
 
 cleanup(){
     print func
-         docker stop $alias_ubuntu 2>/dev/null
-    docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
+    commander_try docker stop $alias_ubuntu 2>/dev/null
+    commander_try docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
 }
 
 run(){
