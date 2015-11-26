@@ -35,7 +35,7 @@ commander_try cat .git/config
 commander_try git reset --hard origin/master
 commander git pull
 commander chmod +x .ci.sh
-cmd_final="echo ./.ci.sh $user $subject $run_type $step_focus"
+cmd_final="./.ci.sh $user $subject $run_type $step_focus"
 commander_try 'sleep 3; clear'
 figlet "cmd: $cmd_final"
 commander sleep 10
