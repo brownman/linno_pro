@@ -23,7 +23,7 @@ commander_try cat .git/config
 commander_try git reset --hard origin/master
 commander git pull
 commander chmod +x .ci.sh
-echo commander ./.ci.sh $user $subject $run_type $step_focus
+commander ./.ci.sh $user $subject $run_type $step_focus
 } || {
   print error failed to clone
 }
