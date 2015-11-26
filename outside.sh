@@ -88,8 +88,8 @@ commander_try    cleanup #2>/dev/null
 #trap trap_exit_outside_sh EXIT SIGINT 
 
     #trap trap_exit_outside_sh EXIT SIGINT; 
-
- read -t 10 -p "Hit ENTER or wait ten seconds" answer; ( test $answer = n ) &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown; $cmd_bash'";  }
+local answer=''
+ read -t 10 -p "Hit ENTER or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown; $cmd_bash'";  }
 ( commander "$docker_cmd_i" )
 }
 
