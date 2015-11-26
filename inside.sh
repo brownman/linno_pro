@@ -15,9 +15,9 @@ user=${1:-user}
 subject=${2:-college}
 run_type=${3:-all}
 step_focus=${4:-}
-
 test -f /tmp/container && {  subject=$(cat /tmp/container | head -1 ); }
 
+run_it(){
 url1="https://gitlab.linnovate.net/brownman/dockerizing_projects.git"
 url2="git@gitlab.linnovate.net:brownman/dockerizing_projects.git"
 
@@ -43,6 +43,7 @@ commander "$cmd_final"
 } || {
   print error failed to clone
 }
+}
 
 trap_exit_inside(){
   local res=$?
@@ -58,13 +59,13 @@ trap_exit_inside(){
 #type_user=user
 
 start_inside(){
-local cmd_hold_fingers="bash -c $HOME/inside.sh"
+#local cmd_hold_fingers="bash -c $HOME/inside.sh"
 #$type_user $subject" 
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
 set +e;
 trap 'trap_exit_inside' EXIT SIGINT; 
-( commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+( commander_try "run_it  &> >(tee $file_report);"  )
 }
 
 start_inside
