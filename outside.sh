@@ -40,7 +40,7 @@ chmod +x /tmp/ofer.sh
     ports='-p 3001:3000'
 
     read -t 10 -p "Hit 'n' or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown;  echo y | screen;   $cmd_bash'";  }
-    docker_cmd_it="docker run -it  --rm --name=$alias_ubuntu --privileged=false \
+    docker_cmd_it="docker run --name=linno_pro -it  --rm --name=$alias_ubuntu --privileged=false \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
@@ -51,7 +51,7 @@ chmod +x /tmp/ofer.sh
         $container_id  \
         bash"
         
-    docker_cmd_i="docker run -i  --rm --name=$alias_ubuntu --privileged=false \
+    docker_cmd_i="docker run -i --name=linno_pro  --rm --name=$alias_ubuntu --privileged=false \
         $volume_ssh  \
         $volume_socket \
         $volume_bin \
