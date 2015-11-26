@@ -115,7 +115,7 @@ return $res
 start(){
 local cmd_hold_fingers=steps
 #"bash -c ./inside.sh"
-export -f trap_exit_outside
+export -f trap_exit_and_sigint_outside
 trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
 set +e
 
