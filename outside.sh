@@ -18,8 +18,12 @@ set_env_docker_cmds(){
 
     HOME_INSIDE=/root
     cmd_node='node /root/wetty/app.js -p 3000'
+    cmd_bash="git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh"
 #& disown; 
-     cmd_inside="bash -c '$cmd_node & screen & echo;echo;echo; sleep 5;  git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh'"
+
+
+    
+
      
     container_id='brownman/linno_pro:master'
     alias_ubuntu="alias_ubuntu"
@@ -85,6 +89,7 @@ commander_try    cleanup #2>/dev/null
 
     #trap trap_exit_outside_sh EXIT SIGINT; 
 
+ read -t 10 -p "Hit ENTER or wait ten seconds" answer; ( test $answer = n ) &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown; $cmd_bash'";  }
 ( commander "$docker_cmd_i" )
 }
 
