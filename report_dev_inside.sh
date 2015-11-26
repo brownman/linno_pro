@@ -18,8 +18,11 @@ trap_exit_inside(){
   #commander_try $HOME/mail_for_fix.sh
   return $res
 }
+subject=''
+type_user=user
+test -f /tmp/container && {  subject=$(cat /tmp/container | head -1 ) }
 
-cmd_hold_fingers="bash -c $HOME/inside.sh"
+cmd_hold_fingers="bash -c $HOME/inside.sh $type_user $subject" 
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
 ( trap 'trap_exit_inside' EXIT SIGINT; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
