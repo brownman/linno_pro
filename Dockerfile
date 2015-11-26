@@ -58,6 +58,8 @@ RUN sed 's@/bin/login@/bin/bash@' -i /root/wetty/app.js
 EXPOSE 3000
 #
 #     CMD env | grep -v 'HOME\|PWD\|PATH' | while read env; do echo "export $env" >> /home/term/.bashrc ; done && \
+#
+RUN echo 'docker attach alias_ubuntu' >> /root/.bashrc 
 
 
 #RUN     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -72,5 +74,5 @@ EXPOSE 3000
 #RUN sudo chmod 755 $HOME/*.sh
 
 
-CMD node /root/wetty/app.js -p 3000
-#CMD [ "bash" , "-c" , "ls -la $HOME" ]
+#CMD node /root/wetty/app.js -p 3000
+CMD [ "bash" , "-c" , "echo ofer.shaham AT gmail.com" ]
