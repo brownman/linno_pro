@@ -25,4 +25,4 @@ test -f /tmp/container && {  subject=$(cat /tmp/container | head -1 ); }
 cmd_hold_fingers="bash -c $HOME/inside.sh $type_user $subject" 
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
-( trap 'trap_exit_inside' EXIT SIGINT; echo commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+( trap 'trap_exit_inside' EXIT SIGINT; commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )

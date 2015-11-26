@@ -5,6 +5,7 @@ clear
 source $dir_self/config.cfg
 
 set_env(){
+    print func
     IP_HOST=$(ip route  get 1  | head -1 | cut -d'c' -f2 | xargs)
     env_ip_host="-e IP_HOST=$IP_HOST"
 
