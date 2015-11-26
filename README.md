@@ -11,6 +11,7 @@ linnovate project magic (aka: linno_pro )
 #or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/docker_install.sh |  bash
 ```
 
+
 ### ensure docker is running + docker can run by user
 ```bash
 sudo usermod -aG docker $LOGNAME
@@ -21,10 +22,16 @@ sudo service docker status || { sudo service docker restart; }
 
 ### how to run ?
 ```bash
+docker pull brownman/linno_pro:master
+
 curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh |  bash
 #or: wget -qO- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh |  bash
 ```
 
+### login the terminal via the browser
+```bash
+google-chrome-stable 0.0.0.0:3001
+```
 
 --------
 
