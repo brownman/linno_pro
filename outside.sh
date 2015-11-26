@@ -124,7 +124,7 @@ return $res
 #cmd_hold_fingers="./outside.sh run bash -c ./inside.sh"
 #trap 'trap_exit1' EXIT
 
-start(){
+start_outside(){
 local cmd_hold_fingers=steps
 #"bash -c ./inside.sh"
 export -f trap_exit_outside
@@ -136,5 +136,5 @@ set +e
 ( commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
 }
 
-start
+start_outside
 popd >/dev/null

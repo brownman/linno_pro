@@ -57,7 +57,7 @@ trap_exit_inside(){
 #subject=''
 #type_user=user
 
-
+start_inside(){
 local cmd_hold_fingers="bash -c $HOME/inside.sh"
 #$type_user $subject" 
 export -f trap_exit_inside
@@ -65,3 +65,6 @@ export -f trap_exit_inside
 set +e;
 trap 'trap_exit_inside' EXIT SIGINT; 
 ( commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )
+}
+
+start_inside
