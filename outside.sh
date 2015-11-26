@@ -23,7 +23,8 @@ set_env_docker_cmds(){
 
 
     
-
+echo $cmd_bash > /tmp/ofer.sh
+chmod +x /tmp/ofer.sh
      
     container_id='brownman/linno_pro:master'
     alias_ubuntu="alias_ubuntu"
@@ -78,10 +79,10 @@ build(){
 
 cleanup(){
     print func
-#docker ps | grep $alias_ubuntu && { \
+docker ps | grep $alias_ubuntu && { \
     commander_try docker stop $alias_ubuntu 2>/dev/null; 
     commander_try docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
- #   }
+   }
 }
 
 run(){
@@ -127,11 +128,13 @@ local cmd_hold_fingers=steps
 #"bash -c ./inside.sh"
 export -f trap_exit_and_sigint_outside
 
+
+#trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
 set +e
 
 (  
 
-trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
+
 commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
 }
 
