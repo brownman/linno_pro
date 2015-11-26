@@ -133,10 +133,7 @@ export -f trap_exit_outside
 trap 'trap_exit_outside' EXIT SIGINT;
 set +e
 
-(  
-
-
-commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
+( commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
 }
 
 start

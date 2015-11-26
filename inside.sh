@@ -35,7 +35,7 @@ commander_try cat .git/config
 commander_try git reset --hard origin/master
 commander git pull
 commander chmod +x .ci.sh
-cmd_final="./.ci.sh $user $subject $run_type $step_focus"
+cmd_final="echo ./.ci.sh $user $subject $run_type $step_focus"
 commander_try 'sleep 3; clear'
 figlet "cmd: $cmd_final"
 commander sleep 10
@@ -58,7 +58,7 @@ trap_exit_inside(){
 #type_user=user
 
 
-cmd_hold_fingers="bash -c $HOME/inside.sh"
+local cmd_hold_fingers="bash -c $HOME/inside.sh"
 #$type_user $subject" 
 export -f trap_exit_inside
 #trap 'trap_exit_inside' EXIT
