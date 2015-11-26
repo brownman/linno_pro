@@ -27,6 +27,7 @@ set_env_docker_cmds(){
 
     volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
+    ports='-p 3001:3000'
     docker_cmd_it="docker run -it  --rm --name=$alias_ubuntu --privileged=false \
         $volume_ssh  \
         $volume_socket \
@@ -34,6 +35,7 @@ set_env_docker_cmds(){
         $volume_apparmor \
         $volume_tmp \
         $env_ip_host \
+        $ports \
         $container_id  \
         bash"
         
@@ -44,6 +46,7 @@ set_env_docker_cmds(){
         $volume_apparmor \
         $volume_tmp \
         $env_ip_host  \
+        $ports \
         $container_id  \
         $cmd_inside"
 }
