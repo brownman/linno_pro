@@ -9,7 +9,7 @@ cmd_inside="bash -c $cmd_bash"
 
 alias_ubuntu=alias_ubuntu
 container_id="${container_id:-'brownman/linno_pro:master'}"
-ports="-p 3000:3000"
+ports="-p 3001:3000"
 #25:25 -p 143:143 -p 587:587"
 volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1:/usr/lib/x86_64-linux-gnu/libapparmor.so.1'
 volume_ssh="-v $HOME/.ssh:/root/.ssh"
