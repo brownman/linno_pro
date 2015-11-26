@@ -78,7 +78,7 @@ cleanup(){
 
 run(){
     print func
-    cleanup #2>/dev/null
+commander_try    cleanup #2>/dev/null
 #trap trap_exit_outside_sh EXIT SIGINT 
 
     #trap trap_exit_outside_sh EXIT SIGINT; 
