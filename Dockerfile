@@ -54,7 +54,7 @@ RUN sed 's@/bin/login@/bin/bash@' -i /root/wetty/app.js
 #     RUN echo 'term:term' | chpasswd
 #     RUN sudo adduser term sudo
 #
-#EXPOSE 3000
+EXPOSE 3000
 #
 #     CMD env | grep -v 'HOME\|PWD\|PATH' | while read env; do echo "export $env" >> /home/term/.bashrc ; done && \
 
@@ -71,5 +71,5 @@ RUN sed 's@/bin/login@/bin/bash@' -i /root/wetty/app.js
 #RUN sudo chmod 755 $HOME/*.sh
 
 
-#CMD node /opt/wetty/app.js -p 3000
+CMD node /opt/wetty/app.js -p 3000
 #CMD [ "bash" , "-c" , "ls -la $HOME" ]
