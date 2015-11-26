@@ -20,7 +20,7 @@ trap_exit_inside(){
 }
 subject=''
 type_user=user
-test -f /tmp/container && {  subject=$(cat /tmp/container | head -1 ) }
+test -f /tmp/container && {  subject=$(cat /tmp/container | head -1 ); }
 
 cmd_hold_fingers="bash -c $HOME/inside.sh $type_user $subject" 
 export -f trap_exit_inside
