@@ -17,7 +17,9 @@ set_env_docker_cmds(){
     env_ip_host="-e IP_HOST=$IP_HOST"
 
     HOME_INSIDE=/root
-     cmd_inside="node /root/wetty/app.js -p 3000 & disown; bash -c 'git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh'"
+    cmd_node='node /root/wetty/app.js -p 3000'
+#& disown; 
+     cmd_inside="bash -c '$cmd_node & disown; echo;echo;echo; sleep 5;  git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh'"
      
     container_id='brownman/linno_pro:master'
     alias_ubuntu="alias_ubuntu$(date +%s)"
