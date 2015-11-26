@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
+
+set +e
+set -u
+cd /tmp/linno_pro
+source config.cfg
+file_report="/tmp/all_$(date +%s)"
+
 dir_self="$( cd $(dirname $0);pwd )"
 pushd $dir_self >/dev/null
-clear
-source $dir_self/config.cfg
 
-set_env(){
+#source $dir_self/config.cfg
+
+set_env_docker_cmds(){
     print func
     IP_HOST=$(ip route  get 1  | head -1 | cut -d'c' -f2 | xargs)
     env_ip_host="-e IP_HOST=$IP_HOST"
 
     HOME_INSIDE=/root
-     cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv ./linno_pro/* .;chmod 755 *.sh; ls -la /root; ./report_dev_inside.sh'"
+     cmd_inside="bash -c 'git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh'"
     container_id='brownman/linno_pro:master'
     alias_ubuntu="alias_ubuntu$(date +%s)"
     volume_apparmor='-v /usr/lib/x86_64-linux-gnu/libapparmor.so.1.1.0:/usr/lib/x86_64-linux-gnu/libapparmor.so.1:ro'
@@ -60,8 +67,6 @@ cleanup(){
     print func
          docker stop $alias_ubuntu 2>/dev/null
     docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
-
-
 }
 
 run(){
@@ -69,52 +74,46 @@ run(){
     cleanup #2>/dev/null
 #trap trap_exit_outside_sh EXIT SIGINT 
 
-( 
-    trap trap_exit_outside_sh EXIT SIGINT; 
-    commander "$docker_cmd_i" )
+    #trap trap_exit_outside_sh EXIT SIGINT; 
+
+( commander "$docker_cmd_i" )
 }
 
 steps(){
     print func
-    local arg=${1:-}
-    set_env
-    mkdir -p /tmp/linno_pro_tmp
-    commander "$arg"
+    #local arg=${1:-}
+    commander set_env_docker_cmds
+    commander mkdir -p /tmp/linno_pro_tmp
+    #commander "$arg"
+    commander run
 }
 
 
 
-trap_exit_outside_sh(){
-    local res=$?
-    print func
-    cleanup
-    
-if [ $res -ne 0 ];then
-    print warning try to run: 
-    trace $docker_cmd_it
-fi
+trap_exit_and_sigint_outside(){
 
-print line
+  local res=$?
+  print func $res
+  subject="$LOGNAME]  outside: $( date +%H:%M:%S) ] $res"
+  
+  #trace some error has occured !
+ commander_try "./mail_for_fix.sh brownman '$subject' $file_report"
+#commander_try ./mail_for_fix.sh
 return $res
 }
 
-export -f trap_exit_outside_sh
+#cmd_hold_fingers="./outside.sh run bash -c ./inside.sh"
+#trap 'trap_exit1' EXIT
 
+start(){
+local cmd_hold_fingers=steps
+#"bash -c ./inside.sh"
+export -f trap_exit_outside
+trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
+set +e
 
-
-echo --- hi ---
-( test $# -eq 0  )  &&  { \
-    trace 1st argument: build OR run
-exit 1;
-} || { \
-
-    if [[ $1 = build || $1 = run ]];then
-        func1=$1
-        cmd_inside="${@:2}"
-        commander steps $func1 $args
-    else
-        trace 1st argument: build OR run
-    fi
+(  commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
 }
-echo --- bye ---
+
+start
 popd >/dev/null

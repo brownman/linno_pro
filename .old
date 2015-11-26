@@ -1,0 +1,38 @@
+
+trap_exit_outside_sh(){
+    local res=$?
+    print func
+    cleanup
+    
+if [ $res -ne 0 ];then
+    print warning try to run: 
+    trace $docker_cmd_it
+fi
+
+print line
+return $res
+}
+
+export -f trap_exit_outside_sh
+
+
+func1(){
+
+
+echo --- hi ---
+( test $# -eq 0  )  &&  { \
+    trace 1st argument: build OR run
+exit 1;
+} || { \
+
+    if [[ $1 = build || $1 = run ]];then
+        func1=$1
+        cmd_inside="${@:2}"
+        commander steps $func1 $args
+    else
+        trace 1st argument: build OR run
+    fi
+}
+echo --- bye ---
+}
+
