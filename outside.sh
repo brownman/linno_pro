@@ -37,7 +37,7 @@ set_env_docker_cmds(){
     volume_bin='-v /usr/bin/docker:/usr/bin/docker'
     ports='-p 3001:3000'
 
- read -t 10 -p "Hit ENTER or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown; $cmd_bash'";  }
+    read -t 10 -p "Hit 'n' or wait ten seconds" answer; [ "$answer" = n ] &&  { cmd_inside="bash -c '$cmd_node'";  }   || {  cmd_inside="bash -c '$cmd_node & disown; $cmd_bash'";  }
     docker_cmd_it="docker run -it  --rm --name=$alias_ubuntu --privileged=false \
         $volume_ssh  \
         $volume_socket \
@@ -78,10 +78,10 @@ build(){
 
 cleanup(){
     print func
-docker ps | grep $alias_ubuntu && { \
+#docker ps | grep $alias_ubuntu && { \
     commander_try docker stop $alias_ubuntu 2>/dev/null; 
     commander_try docker rm $alias_ubuntu 2>/dev/null || (  docker rm -f $alias_ubuntu 2>/dev/null )
-    }
+ #   }
 }
 
 run(){
@@ -110,6 +110,7 @@ trap_exit_and_sigint_outside(){
 
   local res=$?
   print func $res
+  cleanup
   subject="$LOGNAME]  outside: $( date +%H:%M:%S) ] $res"
   
   #trace some error has occured !
@@ -125,10 +126,13 @@ start(){
 local cmd_hold_fingers=steps
 #"bash -c ./inside.sh"
 export -f trap_exit_and_sigint_outside
-trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
+
 set +e
 
-(  commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
+(  
+
+trap 'trap_exit_and_sigint_outside' EXIT SIGINT;
+commander_try "$cmd_hold_fingers  &> >(tee $file_report);"  )  
 }
 
 start
