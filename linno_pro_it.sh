@@ -4,7 +4,11 @@ option2(){
 
 #Option2 (copy+paste)
 
-cmd_bash="${cmd_bash:-./inside.sh}"
+cmd_bash="( git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh ) || bash"
+#& disown; 
+
+
+#cmd_bash="${cmd_bash:-./inside.sh}"
 cmd_inside="bash -c $cmd_bash"
 
 alias_ubuntu=alias_ubuntu
@@ -16,9 +20,6 @@ volume_ssh="-v $HOME/.ssh:/root/.ssh"
 volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
 volume_bin='-v /usr/bin/docker:/usr/bin/docker'
 volume_tmp='-v /tmp:/tmp'
-
-cmd_bash="( git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh ) || bash"
-#& disown; 
 
 
     
