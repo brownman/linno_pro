@@ -16,10 +16,19 @@ volume_ssh="-v $HOME/.ssh:/root/.ssh"
 volume_socket='-v /var/run/docker.sock:/var/run/docker.sock'
 volume_bin='-v /usr/bin/docker:/usr/bin/docker'
 volume_tmp='-v /tmp:/tmp'
+
+cmd_bash="( git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh ) || bash"
+#& disown; 
+
+
+    
+echo $cmd_bash > /tmp/ofer.sh
+chmod +x /tmp/ofer.sh
+     
 docker stop $alias_ubuntu 2>/dev/null
 docker rm $alias_ubuntu 2>/dev/null
 
-cmd="docker pull $container_id; docker run -it --rm --name=$alias_ubuntu --privileged=false \
+cmd="docker run -it --rm --name=$alias_ubuntu --privileged=false \
 $ports \
 $volume_ssh  \
 $volume_socket \
