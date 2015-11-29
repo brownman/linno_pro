@@ -3,7 +3,7 @@ source config.cfg
 option2(){
 commander set_env_docker_cmds
 commander_try cleanup
-commander docker_run_it 
+commander_try docker_run_it 
 }
 
 
