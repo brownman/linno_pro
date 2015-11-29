@@ -25,9 +25,6 @@ sudo service docker status || { sudo service docker restart; }
 docker pull brownman/linno_pro:master
 
 curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.sh |  bash
-
-#interactive mode:
-curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro_it.sh |  bash 
 ```
 
 ### login the terminal via the browser
