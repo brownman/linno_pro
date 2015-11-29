@@ -4,12 +4,15 @@ option2(){
 
 #Option2 (copy+paste)
 
-cmd_bash="( git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh ) || bash"
+cmd_bash="git clone https://github.com/brownman/linno_pro.git; mv /root/linno_pro/* /root;chmod 755 *.sh; ls -la /root; /root/inside.sh"
+ 
+echo $cmd_bash > /tmp/ofer.sh
+chmod +x /tmp/ofer.sh
 #& disown; 
 
 
 #cmd_bash="${cmd_bash:-./inside.sh}"
-cmd_inside="bash -c $cmd_bash"
+cmd_inside="bash -c '/tmp/ofer.sh || bash'"
 
 alias_ubuntu=alias_ubuntu
 container_id="${container_id:-'brownman/linno_pro:master'}"
@@ -22,9 +25,7 @@ volume_bin='-v /usr/bin/docker:/usr/bin/docker'
 volume_tmp='-v /tmp:/tmp'
 
 
-    
-echo $cmd_bash > /tmp/ofer.sh
-chmod +x /tmp/ofer.sh
+   
      
 docker stop $alias_ubuntu 2>/dev/null
 docker rm $alias_ubuntu 2>/dev/null
