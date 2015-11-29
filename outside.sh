@@ -52,7 +52,7 @@ trap_exit_outside(){
 
   local res=$?
   print func $res
-  cleanup
+  commander_try cleanup
   subject="$LOGNAME]  outside: $( date +%H:%M:%S) ] $res"
   
   #trace some error has occured !
