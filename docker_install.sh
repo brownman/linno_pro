@@ -2,7 +2,7 @@ option1(){
 #option 1:
 ##http://www.ubuntuupdates.org/ppa/docker_new?dist=ubuntu-$name
 distro=$( lsb_release -a  | grep Codename | cut -d':' -f2 | xargs )
-apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 #setup the repository:
 sudo sh -c "echo deb https://apt.dockerproject.org/repo ubuntu-${distro} main \
     > /etc/apt/sources.list.d/docker.list"
