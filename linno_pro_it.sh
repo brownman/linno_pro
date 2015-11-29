@@ -19,7 +19,7 @@ volume_tmp='-v /tmp:/tmp'
 docker stop $alias_ubuntu 2>/dev/null
 docker rm $alias_ubuntu 2>/dev/null
 
-cmd="docker pull $container_id; docker run -it --rm --name=$alias_ubuntu --privileged=false \
+cmd="docker run -it --rm --name=$alias_ubuntu --privileged=false \
 $ports \
 $volume_ssh  \
 $volume_socket \
