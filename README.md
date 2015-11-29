@@ -30,7 +30,7 @@ curl -o- https://raw.githubusercontent.com/brownman/linno_pro/master/linno_pro.s
 
 ### login the terminal via the browser
 ```bash
-google-chrome-stable 0.0.0.0:3001
+google-chrome-stable 0.0.0.0:3002
 ```
 
 --------
