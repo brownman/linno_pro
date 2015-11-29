@@ -34,7 +34,9 @@ commander_try    cleanup #2>/dev/null
     #trap trap_exit_outside_sh EXIT SIGINT; 
 
 
-( commander "$docker_cmd_i" )
+#( commander "$docker_cmd_i" )
+
+commander docker_run_i
 }
 
 steps(){
