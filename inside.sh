@@ -23,7 +23,9 @@ url2="git@gitlab.linnovate.net:brownman/dockerizing_projects.git"
 
 
 commander_try test -d  /tmp/dockerizing_projects || { \
-commander_try git clone $url1 /tmp/dockerizing_projects
+commander_try git clone $url1 /tmp/dockerizing_projects || {
+git clone $url2 /tmp/dockerizing_projects
+}
 }
 test $? -eq 0 && { \
 commander cd /tmp/dockerizing_projects
