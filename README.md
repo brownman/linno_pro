@@ -50,6 +50,7 @@ bash -c mail_for_fix.sh
 - password-less SSH login:
 
 ```bash
+cd $HOME/.ssh
 ssh-keygen -f id_rsa -p
 ```
 
